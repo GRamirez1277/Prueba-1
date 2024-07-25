@@ -10,11 +10,11 @@ public class RentItem {
         this.codigo=codigo;
         this.nombre=nombre;
         this.precioRenta=precioRenta;
-        cantidadCopias=0;
+        this.cantidadCopias=0;
     }
     
     public String toString(){
-        return "Código del Item: "+codigo+"\nItem: "+nombre+"\nPrecio de Renta del Item: "+precioRenta;
+        return "Código del Item: "+codigo+"\nItem: "+nombre+"\nPrecio de Renta del Item: "+precioRenta+"\nCopias en existencia: "+cantidadCopias;
     }
     
     public double pagoRenta(int dias){
@@ -33,13 +33,17 @@ public class RentItem {
         return precioRenta;
     }
     
+    public int getCantidadCopias() {
+        return cantidadCopias;
+    }
+    
     public String submenu(){
         return "1-Imprimir";
     }
     
     public void ejecutarOpcion(int opcion){
         if(opcion==1)
-            toString();
+            System.out.println(toString());
         System.out.println("Opcion No Valida");
     }
 

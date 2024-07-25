@@ -1,4 +1,5 @@
 package prueba1;
+
 import java.util.Scanner;
 
 public class Movie extends RentItem{
@@ -10,6 +11,14 @@ public class Movie extends RentItem{
         super(codigo,nombre,precioRenta);
         estado="ESTRENO";
     }
+
+    public String getEstado(){
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado=estado;
+    }
     
     @Override
     public String toString(){
@@ -18,7 +27,7 @@ public class Movie extends RentItem{
     
     @Override
     public double pagoRenta(int dias){
-        double pago=super.precioRenta;
+        double pago=super.getPrecio();
         if(estado.equalsIgnoreCase("ESTRENO")&&dias>2){
             pago+=(dias-2)*50;
         }else if(estado.equalsIgnoreCase("NORMAL")&&dias>5){
@@ -34,13 +43,13 @@ public class Movie extends RentItem{
     
     @Override
     public void ejecutarOpcion(int opcion){
-        if(opcion==2){
+        if(opcion==1){
+            System.out.println(toString());
+        }else if(opcion==2){
             System.out.println("Ingrese el nuevo estado de la pelicula:");
             estado=leer.nextLine();
-        }else if(opcion==3){
-            System.out.println("Opcion No Valida");
-        }else{
-            super.ejecutarOpcion(opcion);
+        } else {
+            System.out.println("OPCION NO VALIDA");
         }
     }
     
